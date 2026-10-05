@@ -4,6 +4,7 @@ import { Mongo } from "./database/mongo.js";
 import { config } from "dotenv";
 import authRouter from "./auth/auth.js";
 import usersRouter from "./routes/users.js";
+import platesRouter from "./routes/plates.js";
 // Essas duas linhas abaixo são para evitar o erro de conexão do Mongo com o DNS no Windows (querySrv ECONNREFUSED).
 import { setServers } from "node:dns/promises";
 setServers(["1.1.1.1", "8.8.8.8"]);
@@ -33,6 +34,7 @@ async function main() {
 
   app.use("/auth", authRouter);
   app.use("/users", usersRouter);
+  app.use("/plates", platesRouter);
 
   app.listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}/`);
