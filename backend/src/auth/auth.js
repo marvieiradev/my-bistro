@@ -75,6 +75,7 @@ authRouter.post("/signup", async (req, res) => {
       }
 
       const result = await Mongo.db.collection(collectionName).insertOne({
+        fullname: req.body.fullname,
         email: req.body.email,
         password: hashedPassword,
         salt,
@@ -112,7 +113,7 @@ authRouter.post("/login", (req, res) => {
       });
     }
 
-    if(!user) {
+    if (!user) {
       return res.status(400).send({
         success: false,
         statusCode: 400,

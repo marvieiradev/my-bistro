@@ -15,8 +15,14 @@ export default function authServices() {
     })
       .then((response) => response.json())
       .then((result) => {
-        if(result.success && result.body.token){
-            localStorage.setItem('auth', JSON.stringify({token: result.body.token, user:result.body.user}))
+        if (result.success && result.body.token) {
+          localStorage.setItem(
+            "auth",
+            JSON.stringify({
+              token: result.body.token,
+              user: result.body.user,
+            }),
+          );
         }
       })
       .catch((error) => {
@@ -26,8 +32,10 @@ export default function authServices() {
         setAuthLoading(false);
       });
   };
-  const logout = async (email, password) => {};
-  
+  const logout = () => {
+    localStorage.removeItem("auth");
+  };
+
   const signup = (formData) => {
     setAuthLoading(true);
     fetch(`${url}/signup`, {
@@ -40,8 +48,14 @@ export default function authServices() {
     })
       .then((response) => response.json())
       .then((result) => {
-        if(result.success && result.body.token){
-            localStorage.setItem('auth', JSON.stringify({token: result.body.token, user:result.body.user}))
+        if (result.success && result.body.token) {
+          localStorage.setItem(
+            "auth",
+            JSON.stringify({
+              token: result.body.token,
+              user: result.body.user,
+            }),
+          );
         }
       })
       .catch((error) => {
