@@ -2,6 +2,7 @@ import styles from "./navbar.module.css";
 import { LuShoppingCart, LuUserRound, LuMenu } from "react-icons/lu";
 import { Drawer } from "@mui/material";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const [openMenu, setOpenMenu] = useState(false);
@@ -13,16 +14,23 @@ export default function Navbar() {
   return (
     <nav className={styles.navbarContainer}>
       <div className={styles.navbarItems}>
-        <img src="/logo.png" alt="Logo" className={styles.logo} />
+        <Link to="/">
+          <img src="/logo.png" alt="Logo" className={styles.logo} />
+        </Link>
+
         <div className={styles.navbarLinksContainer}>
-          <a href="/" className={styles.navbarLink}>
+          <Link to="/" className={styles.navbarLink}>
             Início
-          </a>
-          <a href="/about" className={styles.navbarLink}>
+          </Link>
+          <Link to="/plates" className={styles.navbarLink}>
             Pratos
-          </a>
-          <LuShoppingCart className={styles.navbarLink} />
-          <LuUserRound className={styles.navbarLink} />
+          </Link>
+          <Link to="/cart">
+            <LuShoppingCart className={styles.navbarLink} />
+          </Link>
+          <Link to="/profile">
+            <LuUserRound className={styles.navbarLink} />
+          </Link>
         </div>
       </div>
       <div className={styles.mobileNavbarItems}>
@@ -32,21 +40,17 @@ export default function Navbar() {
           <LuMenu className={styles.navbarLink} onClick={handleOpenMenu} />
         </div>
       </div>
-      <Drawer
-        anchor="right"
-        open={openMenu}
-        onClose={handleOpenMenu}
-      >
+      <Drawer anchor="right" open={openMenu} onClose={handleOpenMenu}>
         <div className={styles.drawer}>
-          <a href="/" className={styles.navbarLink}>
+          <Link to="/" className={styles.navbarLink}>
             Início
-          </a>
-          <a href="/about" className={styles.navbarLink}>
+          </Link>
+          <Link to="/plates" className={styles.navbarLink}>
             Pratos
-          </a>
-          <a href="/about" className={styles.navbarLink}>
+          </Link>
+          <Link to="/profile" className={styles.navbarLink}>
             Perfil
-          </a>
+          </Link>
         </div>
       </Drawer>
     </nav>
