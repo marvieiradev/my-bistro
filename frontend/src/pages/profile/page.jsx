@@ -1,14 +1,15 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import authServices from "../../services/auth";
 import orderServices from "../../services/order";
 import styles from "./page.module.css";
 import {
   LuLogOut,
   LuClock,
-  LuCircleAlert ,
+  LuCircleAlert,
   LuCircleCheck,
 } from "react-icons/lu";
+import Loading from "../loading/page";
 
 export default function Profile() {
   const { logout } = authServices();
@@ -26,7 +27,7 @@ export default function Profile() {
   }, [authData, refetchOrders]);
 
   if (orderLoading) {
-    return <h1>Carregando...</h1>;
+    return <Loading/>;
   }
 
   const handleLoguot = () => {
@@ -76,7 +77,10 @@ export default function Profile() {
           ))}
         </div>
       ) : (
-        <div>Você ainda não tem nenhuma ordem!</div>
+        <div>
+          Você ainda não tem nenhuma ordem!
+          <Link to={"/plates"} className={styles.platesLink}> Clique aqui para ver nossos pratos.</Link>
+        </div>
       )}
     </div>
   );
