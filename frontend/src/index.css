@@ -1,4 +1,4 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -6,7 +6,33 @@
 }
 
 #root {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: x-large;
-  color: #333;
+  background-color: #e3e3e3;
+  color: #0c0c0f;
+  min-height: 100vh;
+}
+
+main {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  width: fit-content;
+  background-color: #0c0c0f;
+  color: #fff;
+  border: none;
+  padding: 0.5em 1em;
+  cursor: pointer;
+  border-radius: 0.5em;
+}
+
+p {
+  display: flex;
+  gap: 0.2em;
 }
