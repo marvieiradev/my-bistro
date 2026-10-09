@@ -15,7 +15,7 @@ export default function Navbar() {
     <nav className={styles.navbarContainer}>
       <div className={styles.navbarItems}>
         <Link to="/">
-          <img src="/logo.png" alt="Logo" className={styles.logo} />
+          <img src="../imgs/logo.png" alt="Logo" className={styles.logo} />
         </Link>
 
         <div className={styles.navbarLinksContainer}>
@@ -34,7 +34,7 @@ export default function Navbar() {
         </div>
       </div>
       <div className={styles.mobileNavbarItems}>
-        <img src="/logo.png" alt="Logo" className={styles.logo} />
+        <img src="..imgs/logo.png" alt="Logo" className={styles.logo} />
         <div className={styles.mobileNabarBtns}>
           <LuShoppingCart className={styles.navbarLink} />
           <LuMenu className={styles.navbarLink} onClick={handleOpenMenu} />

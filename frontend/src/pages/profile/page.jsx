@@ -3,7 +3,12 @@ import { useNavigate } from "react-router-dom";
 import authServices from "../../services/auth";
 import orderServices from "../../services/order";
 import styles from "./page.module.css";
-import { LuLogOut, LuTimer, LuAlertCircle, LuCheckCircle } from "react-icons/lu"
+import {
+  LuLogOut,
+  LuClock,
+  LuCircleAlert ,
+  LuCircleCheck,
+} from "react-icons/lu";
 
 export default function Profile() {
   const { logout } = authServices();
@@ -41,9 +46,24 @@ export default function Profile() {
         <div className={styles.ordersContainer}>
           {ordersList.map((order) => (
             <div key={order.id} className={styles.orderContainer}>
-              {order.pickupStatus === 'Pending' ? <p className={`${styles.pickupStatus} ${styles.pending}`}><LuTimer />{order.pickupStatus}</p> : null}
-                            {order.pickupStatus === 'Completed' ? <p className={`${styles.pickupStatus} ${styles.completed}`}><LuCheckCircle />{order.pickupStatus}</p> : null}
-                            {order.pickupStatus === 'Canceled' ? <p className={`${styles.pickupStatus} ${styles.canceled}`}><LuAlertCircle />{order.pickupStatus}</p> : null}
+              {order.pickupStatus === "Pending" ? (
+                <p className={`${styles.pickupStatus} ${styles.pending}`}>
+                  <LuClock />
+                  {order.pickupStatus}
+                </p>
+              ) : null}
+              {order.pickupStatus === "Completed" ? (
+                <p className={`${styles.pickupStatus} ${styles.completed}`}>
+                  <LuCircleCheck />
+                  {order.pickupStatus}
+                </p>
+              ) : null}
+              {order.pickupStatus === "Canceled" ? (
+                <p className={`${styles.pickupStatus} ${styles.canceled}`}>
+                  <LuCircleAlert />
+                  {order.pickupStatus}
+                </p>
+              ) : null}
               <p>{order.pickupTime}</p>
               {order.orderItems.map((item) => (
                 <div key={item.id}>
