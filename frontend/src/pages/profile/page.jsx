@@ -14,7 +14,7 @@ import Loading from "../loading/page";
 export default function Profile() {
   const { logout } = authServices();
   const { getUserOrders, orderLoading, refetchOrders, ordersList } =
-    orderServices;
+    orderServices();
   const navigate = useNavigate();
   const authData = JSON.parse(localStorage.getItem("auth"));
 
@@ -27,7 +27,7 @@ export default function Profile() {
   }, [authData, refetchOrders]);
 
   if (orderLoading) {
-    return <Loading/>;
+    return <Loading />;
   }
 
   const handleLoguot = () => {
@@ -43,7 +43,7 @@ export default function Profile() {
         <p>{authData?.user?.email}</p>
       </div>
       <button onClick={handleLoguot}>Sair</button>
-      {ordersList?.lenght > 0 ? (
+      {ordersList.length > 0 ? (
         <div className={styles.ordersContainer}>
           {ordersList.map((order) => (
             <div key={order.id} className={styles.orderContainer}>
@@ -68,8 +68,8 @@ export default function Profile() {
               <p>{order.pickupTime}</p>
               {order.orderItems.map((item) => (
                 <div key={item.id}>
-                  <h4>{item.itemDetails.name}</h4>
-                  <p>{item.itemDetails.price}</p>
+                  <h4>{item.itemDetails[0].name}</h4>
+                  <p>{item.itemDetails[0].price}</p>
                   <p>Quantidade: {item.quantity}</p>
                 </div>
               ))}
@@ -79,7 +79,10 @@ export default function Profile() {
       ) : (
         <div>
           Você ainda não tem nenhuma ordem!
-          <Link to={"/plates"} className={styles.platesLink}> Clique aqui para ver nossos pratos.</Link>
+          <Link to={"/plates"} className={styles.platesLink}>
+            {" "}
+            Clique aqui para ver nossos pratos.
+          </Link>
         </div>
       )}
     </div>

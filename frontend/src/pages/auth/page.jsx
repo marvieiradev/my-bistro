@@ -9,7 +9,7 @@ export default function Cart() {
   const [formData, setFormData] = useState(null);
   const { login, signup, authLoading } = authServices();
   const navigate = useNavigate();
-  const authData = (JSON.parse = localStorage.getItem("auth"));
+  const authData = JSON.parse(localStorage.getItem("auth"));
 
   useEffect(() => {
     if (authData) {
