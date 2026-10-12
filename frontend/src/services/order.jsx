@@ -9,6 +9,7 @@ export default function orderServices() {
 
   const getUserOrders = (userId) => {
     setOrderLoading(true);
+
     fetch(`${url}/userorders/${userId}`, {
       method: "GET",
       headers: {
@@ -25,12 +26,36 @@ export default function orderServices() {
         }
       })
       .catch((error) => {
-        console.error("Error logging in:", error);
+        console.log(error);
       })
       .finally(() => {
         setOrderLoading(false);
         setRefetchOrders(false);
       });
   };
-  return { getUserOrders, orderLoading, refetchOrders, ordersList };
+
+  const sendOrder = (orderData) => {
+    setOrderLoading(true);
+
+    fetch(`${url}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify(orderData),
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {
+        setOrderLoading(false);
+      });
+  };
+
+  return { getUserOrders, orderLoading, refetchOrders, ordersList, sendOrder };
 }

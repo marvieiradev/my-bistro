@@ -1,50 +1,63 @@
-import platesServices from "../../services/plates"
-import { useEffect, useState } from "react"
-import Loading from "../loading/page"
-import PlateCard from "../../components/plateCard/plateCard"
-import styles from './page.module.css'
-import PlatePopup from "../../components/platePopup/platePopup"
+import platesServices from "../../services/plates";
+import { useEffect, useState } from "react";
+import Loading from "../loading/page";
+import PlateCard from "../../components/plateCard/plateCard";
+import styles from "./page.module.css";
+import PlatePopup from "../../components/platePopup/platePopup";
+import { useCartContext } from "../../contexts/useCartContext";
 
 export default function Plates() {
+  const { getAvailablePlates, platesList, platesLoading, refetchPlates } =
+    platesServices();
+  const [plateSelected, setPlateSelected] = useState(null);
+  const { addToCart } = useCartContext();
 
-    const { getAvailablePlates, platesList, platesLoading, refetchPlates } = platesServices()
-    const [plateSelected, setPlateSelected] = useState(null)
-
-
-    useEffect(() => {
-        if(refetchPlates) {
-            getAvailablePlates()
-        }
-    }, [refetchPlates])
-
-    const handlePlateSelected = (plate) => {
-        setPlateSelected(plate)
+  useEffect(() => {
+    if (refetchPlates) {
+      getAvailablePlates();
     }
+  }, [refetchPlates]);
 
-    const handleClosePopup = () => {
-        setPlateSelected(null)
-    }
+  const handlePlateSelected = (plate) => {
+    setPlateSelected(plate);
+  };
 
-    if(platesLoading) {
-        return( <Loading /> )
-    }
+  const handleClosePopup = () => {
+    setPlateSelected(null);
+  };
 
-    return (
-        <>
-            <div>
-                {platesList.map((plate) => (
-                    <div key={plate._id} className={styles.cardContainer} onClick={() => { handlePlateSelected(plate) }}>
-                        <PlateCard plateData={plate} />
-                    </div>
-                ))}
-            </div>
+  const handleAddToCart = (itemToAdd) => {
+    addToCart(itemToAdd);
+    handleClosePopup();
+  };
 
-            {plateSelected && (
-                <PlatePopup 
-                plateData={plateSelected} 
-                onClose={handleClosePopup} 
-                />
-            )}
-        </>
-    )
+  if (platesLoading) {
+    return <Loading />;
+  }
+
+  return (
+    <>
+      <div>
+        {platesList.map((plate) => (
+          <div
+            key={plate._id}
+            className={styles.cardContainer}
+            onClick={() => {
+              handlePlateSelected(plate);
+            }}
+          >
+            <PlateCard plateData={plate} />
+          </div>
+        ))}
+      </div>
+
+      {plateSelected && (
+        <PlatePopup
+          plateData={plateSelected}
+          onClose={handleClosePopup}
+          onAddToCart={handleAddToCart}
+        />
+      )}
+    </>
+  );
 }
