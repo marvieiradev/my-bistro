@@ -52,6 +52,7 @@ export default class OrdersDataAccess {
         },
       ])
       .toArray();
+
     return result;
   }
 
@@ -60,9 +61,7 @@ export default class OrdersDataAccess {
       .collection(collectionName)
       .aggregate([
         {
-          $match: {
-            userId: new ObjectId(userId),
-          },
+          $match: { userId: new ObjectId(userId) },
         },
         {
           $lookup: {
@@ -108,28 +107,32 @@ export default class OrdersDataAccess {
         },
       ])
       .toArray();
+
     return result;
   }
 
   async addOrder(orderData) {
     const { items, ...orderDataRest } = orderData;
+
     orderDataRest.createdAt = new Date();
     orderDataRest.pickupStatus = "Pending";
     orderDataRest.userId = new ObjectId(orderDataRest.userId);
+
     const newOrder = await Mongo.db
       .collection(collectionName)
       .insertOne(orderDataRest);
 
-    if (!newOrder.insertId) {
-      throw new Error("Failed to create order");
+    if (!newOrder.insertedId) {
+      throw new Error("Order cannot be inserted");
     }
 
     items.map((item) => {
       item.plateId = new ObjectId(item.plateId);
-      item.orderId = new ObjectId(newOrder.insertedId.toString());
+      item.orderId = new ObjectId(newOrder.insertedId);
     });
 
     const result = await Mongo.db.collection("orderItems").insertMany(items);
+
     return result;
   }
 
@@ -143,9 +146,10 @@ export default class OrdersDataAccess {
       .findOneAndDelete({ _id: new ObjectId(orderId) });
 
     const result = {
-      orderToDelete,
       itemsToDelete,
+      orderToDelete,
     };
+
     return result;
   }
 
@@ -153,6 +157,7 @@ export default class OrdersDataAccess {
     const result = await Mongo.db
       .collection(collectionName)
       .findOneAndUpdate({ _id: new ObjectId(orderId) }, { $set: orderData });
+
     return result;
   }
 }

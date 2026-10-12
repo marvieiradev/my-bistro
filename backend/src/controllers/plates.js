@@ -1,5 +1,5 @@
 import PlatesDataAccess from "../dataAccess/plates.js";
-import {ok, serverError} from "../helpers/httpResponse.js";
+import {ok, serverError} from "../helpers/httpResponses.js";
 
 export default class PlatesController {
   constructor() {
