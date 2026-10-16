@@ -1,8 +1,15 @@
-import { TextField, Button } from "@mui/material";
 import { useEffect, useState } from "react";
-import styles from "./page.module.css";
 import authServices from "../../services/auth";
 import { useNavigate } from "react-router-dom";
+import { Button } from "../../components/ui/button";
+import { Input } from "../../components/ui/input"
+import {
+  Field,
+  FieldDescription,
+  FieldGroup,
+  FieldLabel,
+  FieldSet,
+} from "../../components/ui/field";
 
 export default function Cart() {
   const [formType, setFormType] = useState("login");
@@ -56,78 +63,112 @@ export default function Cart() {
   }
 
   return (
-    <div className={styles.authPageContainer}>
-      {formType === "login" ? (
-        <>
-          <h1>Login</h1>
-          <form onSubmit={handleSubmitForm}>
-            <TextField
-              required
-              label="Email"
-              type="email"
-              placeholder="Digite seu email"
-              name="email"
-              onChange={handleFormDataChange}
-            />
-            <TextField
-              required
-              label="Password"
-              type="password"
-              placeholder="Digite sua senha"
-              name="password"
-              onChange={handleFormDataChange}
-            />
-            <Button type="submit">Login</Button>
-          </form>
-          <button onClick={handleChangeFormType}>
-            Ainda não tem uma conta? Cadastre-se
-          </button>
-        </>
-      ) : null}
+    <div className="flex flex-col w-full items-center-safe mt-4! p-4!">
+      <form className="w-full max-w-120" onSubmit={handleSubmitForm}>
+        {formType === "login" ? (
+          <>
+            <h1 className="text-center mb-4!">Login</h1>
+            <FieldSet>
+              <FieldGroup>
+                <Field>
+                  <FieldLabel htmlFor="username">Email</FieldLabel>
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="Digite seu email"
+                    name="email"
+                    required
+                    onChange={handleFormDataChange}
+                  />
+                </Field>
+                <Field>
+                  <FieldLabel htmlFor="password">Senha</FieldLabel>
+                  <Input
+                    id="password"
+                    type="password"
+                    placeholder="••••••••"
+                    name="password"
+                    onChange={handleFormDataChange}
+                  />
+                </Field>
+              </FieldGroup>
+              <div className="flex flex-col w-full items-center justify-center">
+                <Button type="submit">Login</Button>
+                 <span
+              className="text-sm mt-4! text-blue-600 cursor-pointer"
+              onClick={handleChangeFormType}
+            >
+              Ainda não tem uma conta? Cadastre-se
+            </span>
+              </div>
+            </FieldSet>
+           
+          </>
+        ) : null}
 
-      {formType === "signup" ? (
-        <>
-          <h1>Sign Up</h1>
-          <form onSubmit={handleSubmitForm}>
-            <TextField
-              required
-              label="Name"
-              type="text"
-              placeholder="Digite seu nome"
-              name="fullname"
-              onChange={handleFormDataChange}
-            />
-            <TextField
-              required
-              label="Email"
-              type="email"
-              placeholder="Digite seu email"
-              name="email"
-              onChange={handleFormDataChange}
-            />
-            <TextField
-              required
-              label="Senha"
-              type="password"
-              placeholder="Digite sua senha"
-              name="password"
-              onChange={handleFormDataChange}
-            />
-            <TextField
-              required
-              label="Confirmar Senha"
-              type="password"
-              placeholder="Digite sua senha novamente"
-              name="confirmPassword"
-              onChange={handleFormDataChange}
-            />
-            <Button type="submit">Cadastrar</Button>
-          </form>
-          <button onClick={handleChangeFormType}>
-            Já tem uma conta? Faça login
-          </button>
-        </>
-      ) : null}
+        {formType === "signup" ? (
+          <>
+            <h1 className="text-center mb-4!">Cadastrar</h1>
+            <FieldSet>
+              <FieldGroup>
+                <Field>
+                  <FieldLabel htmlFor="fullname">Nome</FieldLabel>
+                  <Input
+                    id="fullname"
+                    type="text"
+                    placeholder="Digite seu nome"
+                    name="fullname"
+                    required
+                    onChange={handleFormDataChange}
+                  />
+                </Field>
+                <Field>
+                  <FieldLabel htmlFor="email">Email</FieldLabel>
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="Digite seu email"
+                    name="email"
+                    required
+                    onChange={handleFormDataChange}
+                  />
+                </Field>
+                <Field>
+                  <FieldLabel htmlFor="password">Senha</FieldLabel>
+                  <Input
+                    id="password"
+                    type="password"
+                    placeholder="••••••••"
+                    name="password"
+                    onChange={handleFormDataChange}
+                  />
+                </Field>
+                <Field>
+                  <FieldLabel htmlFor="confirmPassword">
+                    Confirmar Senha
+                  </FieldLabel>
+                  <Input
+                    id="confirmPassword"
+                    type="password"
+                    placeholder="••••••••"
+                    name="confirmPassword"
+                    onChange={handleFormDataChange}
+                  />
+                </Field>
+              </FieldGroup>
+              <div className="flex flex-col w-full items-center justify-center">
+                <Button type="submit">Cadastrar</Button>
+                <p
+                  className="text-sm text-center mt-4! text-blue-600 cursor-pointer"
+                  onClick={handleChangeFormType}
+                >
+                  Já tem uma conta? Faça login
+                </p>
+              </div>
+            </FieldSet>
+          </>
+        ) : null}
+      </form>
     </div>
   );
 }
