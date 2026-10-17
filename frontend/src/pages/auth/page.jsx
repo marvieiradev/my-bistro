@@ -5,11 +5,11 @@ import { Button } from "../../components/ui/button";
 import { Input } from "../../components/ui/input"
 import {
   Field,
-  FieldDescription,
   FieldGroup,
   FieldLabel,
   FieldSet,
 } from "../../components/ui/field";
+import Loading from "../loading/page";
 
 export default function Cart() {
   const [formType, setFormType] = useState("login");
@@ -59,7 +59,7 @@ export default function Cart() {
   };
 
   if (authLoading) {
-    return <h1>Carregando</h1>;
+    return <Loading/>;
   }
 
   return (
