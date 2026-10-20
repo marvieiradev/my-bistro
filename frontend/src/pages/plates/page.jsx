@@ -2,9 +2,9 @@ import platesServices from "../../services/plates";
 import { useEffect, useState } from "react";
 import Loading from "../loading/page";
 import PlateCard from "../../components/plateCard/plateCard";
-import styles from "./page.module.css";
 import PlatePopup from "../../components/platePopup/platePopup";
 import { useCartContext } from "../../contexts/useCartContext";
+import { Dialog } from "../../components/ui/dialog";
 
 export default function Plates() {
   const { getAvailablePlates, platesList, platesLoading, refetchPlates } =
@@ -37,11 +37,11 @@ export default function Plates() {
 
   return (
     <>
-      <div>
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-4 p-4!">
         {platesList.map((plate) => (
           <div
             key={plate._id}
-            className={styles.cardContainer}
+            className="flex flex-col justify-center items-center"
             onClick={() => {
               handlePlateSelected(plate);
             }}
@@ -51,13 +51,15 @@ export default function Plates() {
         ))}
       </div>
 
-      {plateSelected && (
-        <PlatePopup
-          plateData={plateSelected}
-          onClose={handleClosePopup}
-          onAddToCart={handleAddToCart}
-        />
-      )}
+      {/*plateSelected && (
+        <Dialog className="z-40">
+          <PlatePopup
+            plateData={plateSelected}
+            onClose={handleClosePopup}
+            onAddToCart={handleAddToCart}
+          />
+        </Dialog>
+      )*/}
     </>
   );
 }
