@@ -1,12 +1,12 @@
-import styles from "./page.module.css";
 import Dessert from '../../../public/imgs/home/dessert'
 import NaturalFood from '../../../public/imgs/home/naturalFood'
 import Vegetable from '../../../public/imgs/home/vegetable'
 import { FaMapMarkerAlt, FaFacebookSquare, FaInstagram, FaWhatsapp } from "react-icons/fa"
+import { Button } from '../../components/ui/button'
 
 export default function Home() {
   return (
-    <div className={styles.pageContainer}>
+    <div className="flex flex-col items-center justify-center gap-2! p-2!">
       <section>
         <h1>Bem vindo ao My Bistrô</h1>
         <p>
@@ -16,7 +16,7 @@ export default function Home() {
           reiciendis corrupti.
         </p>
       </section>
-      <section className={styles.foodSection}>
+      <section className="grid grid-cols-1 md:grid-cols-3 bg-black text-white p-2! gap-2!">
         <div>
           <i>
             <NaturalFood />
@@ -50,27 +50,27 @@ export default function Home() {
         </div>
       </section>
 
-      <section className={styles.contactSection}>
+      <section className="flex flex-col gap-2!">
         <h1>Stay Updated!</h1>
         <p>
           Enter the world of My Gastronomy by following us on social media.
           You'll always be updated on our culinary creations, special events,
           and gourmet surprises. Don't miss out on a single bite!
         </p>
-        <div className={styles.socialButtonsContainer}>
-          <button className={styles.socialButton}>
+        <div className="flex flex-col md:flex-row w-full justify-around gap-2!">
+          <Button className="w-full">
             <FaInstagram /> Instagram
-          </button>
-          <button className={styles.socialButton}>
+          </Button>
+          <Button className="w-full">
             <FaFacebookSquare /> Facebook
-          </button>
-          <button className={styles.socialButton}>
+          </Button>
+          <Button className="w-full">
             <FaWhatsapp /> Whatsapp
-          </button>
-          <button className={styles.socialButton}>
+          </Button>
+          <Button className="w-full">
             <FaMapMarkerAlt />
             Location
-          </button>
+          </Button>
         </div>
       </section>
     </div>

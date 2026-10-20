@@ -2,14 +2,13 @@ import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import authServices from "../../services/auth";
 import orderServices from "../../services/order";
-import styles from "./page.module.css";
 import {
-  LuLogOut,
   LuClock,
   LuCircleAlert,
   LuCircleCheck,
 } from "react-icons/lu";
 import Loading from "../loading/page";
+import { Badge } from "../../components/ui/badge";
 
 export default function Profile() {
   const { logout } = authServices();
@@ -36,34 +35,33 @@ export default function Profile() {
   };
 
   return (
-    <div className={styles.pageContainer}>
+    <div className="flex flex-col p-2! gap-2!">
       <div>
-        {" "}
         <h1>{authData?.user?.fullname}</h1>
         <p>{authData?.user?.email}</p>
       </div>
       <button onClick={handleLoguot}>Sair</button>
       {ordersList.length > 0 ? (
-        <div className={styles.ordersContainer}>
+        <div className="grid grid-cols-2 gap-2!">
           {ordersList.map((order) => (
-            <div key={order.id} className={styles.orderContainer}>
+            <div key={order.id} className="flex flex-col gap-2! bg-black text-white p-4!">
               {order.pickupStatus === "Pending" ? (
-                <p className={`${styles.pickupStatus} ${styles.pending}`}>
+                <Badge className="gap-2! p-2! rounded-lg bg-yellow-400 ">
                   <LuClock />
                   {order.pickupStatus}
-                </p>
+                </Badge>
               ) : null}
               {order.pickupStatus === "Completed" ? (
-                <p className={`${styles.pickupStatus} ${styles.completed}`}>
+                <Badge className="gap-2! p-2! rounded-lg bg-green-400">
                   <LuCircleCheck />
                   {order.pickupStatus}
-                </p>
+                </Badge>
               ) : null}
               {order.pickupStatus === "Canceled" ? (
-                <p className={`${styles.pickupStatus} ${styles.canceled}`}>
+                <Badge className="gap-2! p-2! rounded-lg bg-red-400">
                   <LuCircleAlert />
                   {order.pickupStatus}
-                </p>
+                </Badge>
               ) : null}
               <p>{order.pickupTime}</p>
               {order.orderItems.map((item) => (
@@ -79,8 +77,7 @@ export default function Profile() {
       ) : (
         <div>
           Você ainda não tem nenhuma ordem!
-          <Link to={"/plates"} className={styles.platesLink}>
-            {" "}
+          <Link to={"/plates"} className="color-black underline">
             Clique aqui para ver nossos pratos.
           </Link>
         </div>

@@ -1,10 +1,8 @@
 import platesServices from "../../services/plates";
 import { useEffect, useState } from "react";
 import Loading from "../loading/page";
-import PlateCard from "../../components/plateCard/plateCard";
-import PlatePopup from "../../components/platePopup/platePopup";
 import { useCartContext } from "../../contexts/useCartContext";
-import { Dialog } from "../../components/ui/dialog";
+import PlateDialog from "../../components/plateDialog";
 
 export default function Plates() {
   const { getAvailablePlates, platesList, platesLoading, refetchPlates } =
@@ -46,20 +44,10 @@ export default function Plates() {
               handlePlateSelected(plate);
             }}
           >
-            <PlateCard plateData={plate} />
+            <PlateDialog plateData={plate} />
           </div>
         ))}
       </div>
-
-      {/*plateSelected && (
-        <Dialog className="z-40">
-          <PlatePopup
-            plateData={plateSelected}
-            onClose={handleClosePopup}
-            onAddToCart={handleAddToCart}
-          />
-        </Dialog>
-      )*/}
     </>
   );
 }

@@ -1,8 +1,8 @@
 import { Dialog } from "@mui/material";
-import styles from "./confirmOrderPopup.module.css";
 import { useState } from "react";
 import { TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { Button } from "./ui/button";
 
 export default function ConfirmOrderPopup({ open, onClose, onConfirm }) {
   const [formData, setFormData] = useState(null);
@@ -36,24 +36,25 @@ export default function ConfirmOrderPopup({ open, onClose, onConfirm }) {
 
   return (
     <Dialog open={open} onClose={onClose}>
-      <div className={styles.popupContainer}>
+      <div className="flex flex-col gap-2 p-2 bg-[#faf0ca] text-black ">
         <h2>Já estamos quase lá...</h2>
         <p>
           Confirme seu pedido com a data atual:{" "}
-          <strong>{new Date().toLocaleDateString()}</strong>. A que horas você vai vir buscar o seu pedido?
+          <strong>{new Date().toLocaleDateString()}</strong>. A que horas você
+          vai vir buscar o seu pedido?
         </p>
-        <form className={styles.formContainer}>
+        <form className="">
           <TextField
             onChange={handleFormDataChange}
             required
             type="time"
             name="pickupTime"
           />
-          <div className={styles.confirmBtns}>
-            <button className={styles.cancelBtn} onClick={onClose}>
+          <div className="flex gap-8!">
+            <Button className="" onClick={onClose}>
               Cancelar
-            </button>
-            <button onClick={handleConfirm}>Confirmar</button>
+            </Button>
+            <Button onClick={handleConfirm}>Confirmar</Button>
           </div>
         </form>
       </div>

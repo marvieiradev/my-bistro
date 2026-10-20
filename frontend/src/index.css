@@ -51,3 +51,16 @@ p {
     border-bottom-right-radius: 0.5em;
 }
 
+.pending {
+  background-color: #d6c918;
+}
+
+.completed {
+  background-color: #9ad618;
+}
+
+.canceled {
+  background-color: #ce651a;
+}
+
+
