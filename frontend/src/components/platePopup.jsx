@@ -10,7 +10,7 @@ export default function PlatePopup({ plateData, onAddToCart }) {
             <img
               src={plateData.imgUrl}
               alt=""
-              className="h-75 w-full object-cover"
+              className="h-85 w-full object-cover"
             />
             <div className="flex flex-col gap-4 p-4!">
               <h2>{plateData.name}</h2>

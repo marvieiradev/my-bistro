@@ -23,13 +23,13 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="flex items-center bg-black h-24 p-2 justify-center">
+    <nav className="flex items-center bg-background h-20 p-2 justify-center">
       <div className="hidden md:flex justify-between items-center w-full max-w-300">
         <Link to="/">
           <img src="../imgs/logo.png" alt="Logo" className="w-12" />
         </Link>
 
-        <div className="flex justify-center items-center gap-8! p-2 text-white">
+        <div className="flex justify-center items-center gap-8! p-2 text-foreground">
           <Link to="/">Início</Link>
           <Link to="/plates">Pratos</Link>
           <Link to="/cart">
@@ -41,16 +41,16 @@ export default function Navbar() {
         </div>
       </div>
 
-      <div className="flex w-full md:hidden justify-between items-center gap-2 font-2xl text-white pt-0! pb-0! pr-6! pl-6!">
+      <div className="flex w-full md:hidden justify-between items-center gap-2 font-2xl text-foreground pt-0! pb-0! pr-6! pl-6!">
         <img src="../imgs/logo.png" alt="Logo" className="w-12" />
-        <div className="flex justify-center items-center gap-2 font-2xl">
+        <div className="flex justify-center items-center gap-2 font-2xl max-w-300">
           <LuShoppingCart />
           <Drawer swipeDirection="right" className="text-lg">
             <DrawerTrigger
-              render={<LuMenu className="text-white" />}
+              render={<LuMenu className="text-foreground" />}
             ></DrawerTrigger>
             <DrawerContent>
-              <div className="flex flex-col p-4! h-full justify-center bg-black text-2xl text-white">
+              <div className="flex flex-col p-4! h-full justify-center bg-background text-2xl text-foreground">
                 <div className="flex flex-col w-full justify-center p-2 gap-8! decoration-none bg-transparent">
                   <DrawerClose>
                     <Link to="/" onClick={handleOpenMenu}>

@@ -5,15 +5,15 @@ export default function PlateCard({ plateData, onClick }) {
     <Card>
       <CardContent>
         <div
-          className="flex flex-col items-center justify-end w-[320px] h-105 relative cardContainer"
+          className="flex flex-col items-center justify-end w-90 h-110 relative cardContainer"
           onClick={onClick}
         >
           <img
             src={plateData.imgUrl}
             alt=""
-            className="w-full h-full object-cover rounded-md"
+            className="w-full h-full object-cover"
           />
-          <div className="flex flex-col gap-4 absolute w-[90%] pb-1">
+          <div className="flex flex-col absolute w-[90%] p-4!">
             <h4>{plateData.name}</h4>
             <h3 className="text-right">$ {plateData.price}</h3>
           </div>

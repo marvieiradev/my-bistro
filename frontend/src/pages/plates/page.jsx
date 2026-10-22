@@ -35,7 +35,7 @@ export default function Plates() {
 
   return (
     <>
-      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-4 p-4!">
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-2 mt-4! mb-4! max-w-300">
         {platesList.map((plate) => (
           <div
             key={plate._id}

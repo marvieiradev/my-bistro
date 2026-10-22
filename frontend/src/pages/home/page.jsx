@@ -12,7 +12,7 @@ import { Card, CardContent } from "../../components/ui/card";
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center gap-2! p-2!">
+    <div className="flex flex-col items-center justify-center gap-2! p-2! bg-foreground text-background max-w-300">
       <section>
         <h1>Bem vindo ao My Bistrô</h1>
         <p>
@@ -62,14 +62,14 @@ export default function Home() {
         </Card>
       </section>
 
-      <section className="flex flex-col gap-2!">
+      <section className="flex flex-col gap-2! w-full">
         <h1>Stay Updated!</h1>
         <p>
           Enter the world of My Gastronomy by following us on social media.
           You'll always be updated on our culinary creations, special events,
           and gourmet surprises. Don't miss out on a single bite!
         </p>
-        <div className="flex flex-col md:flex-row w-full justify-around gap-2!">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-2!">
           <Button className="w-full">
             <FaInstagram /> Instagram
           </Button>
