@@ -45,7 +45,7 @@ export default function Cart() {
     return (
       <div>
         <h1>Seu carrinho está vazio... :/</h1>
-        <button>Veja nossos pratos!</button>
+        <Button>Veja nossos pratos!</Button>
       </div>
     );
   }

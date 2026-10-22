@@ -1,8 +1,14 @@
-import Dessert from '../../../public/imgs/home/dessert'
-import NaturalFood from '../../../public/imgs/home/naturalFood'
-import Vegetable from '../../../public/imgs/home/vegetable'
-import { FaMapMarkerAlt, FaFacebookSquare, FaInstagram, FaWhatsapp } from "react-icons/fa"
-import { Button } from '../../components/ui/button'
+import Dessert from "../../../public/imgs/home/dessert";
+import NaturalFood from "../../../public/imgs/home/naturalFood";
+import Vegetable from "../../../public/imgs/home/vegetable";
+import {
+  FaMapMarkerAlt,
+  FaFacebookSquare,
+  FaInstagram,
+  FaWhatsapp,
+} from "react-icons/fa";
+import { Button } from "../../components/ui/button";
+import { Card, CardContent } from "../../components/ui/card";
 
 export default function Home() {
   return (
@@ -16,38 +22,44 @@ export default function Home() {
           reiciendis corrupti.
         </p>
       </section>
-      <section className="grid grid-cols-1 md:grid-cols-3 bg-black text-white p-2! gap-2!">
-        <div>
-          <i>
-            <NaturalFood />
-          </i>
-          <h4>Excellence in Everyday Life</h4>
-          <p>
-            Discover our daily selection of unique dishes to add a fresh and
-            refined touch to your table.
-          </p>
-        </div>
-        <div>
-          <i>
-            <Vegetable />
-          </i>
-          <h4>First Choice Ingredients</h4>
-          <p>
-            We carefully select exceptional ingredients to ensure the highest
-            quality in your favorite dishes.
-          </p>
-        </div>
-        <div>
-          <i>
-            <Dessert />
-          </i>
-          <h4>Taste for Everyone</h4>
-          <p>
-            Explore a world of flavors with our comprehensive offering, designed
-            to satisfy the palates of the whole family, from appetizers to
-            desserts.
-          </p>
-        </div>
+      <section className="grid grid-cols-1 md:grid-cols-3 text-white p-2! gap-2!">
+        <Card className="bg-black p-4!">
+          <CardContent>
+            <i>
+              <NaturalFood />
+            </i>
+            <h4>Excellence in Everyday Life</h4>
+            <p>
+              Discover our daily selection of unique dishes to add a fresh and
+              refined touch to your table.
+            </p>
+          </CardContent>
+        </Card>
+        <Card className="bg-black p-4!">
+          <CardContent>
+            <i>
+              <Vegetable />
+            </i>
+            <h4>First Choice Ingredients</h4>
+            <p>
+              We carefully select exceptional ingredients to ensure the highest
+              quality in your favorite dishes.
+            </p>
+          </CardContent>
+        </Card>
+        <Card className="bg-black p-4!">
+          <CardContent>
+            <i>
+              <Dessert />
+            </i>
+            <h4>Taste for Everyone</h4>
+            <p>
+              Explore a world of flavors with our comprehensive offering,
+              designed to satisfy the palates of the whole family, from
+              appetizers to desserts.
+            </p>
+          </CardContent>
+        </Card>
       </section>
 
       <section className="flex flex-col gap-2!">

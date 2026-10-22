@@ -1,11 +1,11 @@
 {
-  "style": "base-sera",
+  "style": "base-luma",
   "rsc": false,
   "tsx": false,
   "tailwind": {
     "config": "",
     "css": "globals.css",
-    "baseColor": "taupe",
+    "baseColor": "zinc",
     "cssVariables": true
   },
   "iconLibrary": "lucide",

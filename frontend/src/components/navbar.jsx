@@ -1,7 +1,19 @@
 import { LuShoppingCart, LuUserRound, LuMenu } from "react-icons/lu";
-import { Drawer } from "@mui/material";
+//import { Drawer } from "@mui/material";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "./ui/drawer";
+import { Button } from "./ui/button";
 
 export default function Navbar() {
   const [openMenu, setOpenMenu] = useState(false);
@@ -18,12 +30,8 @@ export default function Navbar() {
         </Link>
 
         <div className="flex justify-center items-center gap-8! p-2 text-white">
-          <Link to="/" >
-            Início
-          </Link>
-          <Link to="/plates">
-            Pratos
-          </Link>
+          <Link to="/">Início</Link>
+          <Link to="/plates">Pratos</Link>
           <Link to="/cart">
             <LuShoppingCart />
           </Link>
@@ -37,28 +45,34 @@ export default function Navbar() {
         <img src="../imgs/logo.png" alt="Logo" className="w-12" />
         <div className="flex justify-center items-center gap-2 font-2xl">
           <LuShoppingCart />
-          <LuMenu  onClick={handleOpenMenu} />
+          <Drawer swipeDirection="right" className="text-lg">
+            <DrawerTrigger
+              render={<LuMenu className="text-white" />}
+            ></DrawerTrigger>
+            <DrawerContent>
+              <div className="flex flex-col p-4! h-full justify-center bg-black text-2xl text-white">
+                <div className="flex flex-col w-full justify-center p-2 gap-8! decoration-none bg-transparent">
+                  <DrawerClose>
+                    <Link to="/" onClick={handleOpenMenu}>
+                      Início
+                    </Link>
+                  </DrawerClose>
+                  <DrawerClose>
+                    <Link to="/plates" onClick={handleOpenMenu}>
+                      Pratos
+                    </Link>
+                  </DrawerClose>
+                  <DrawerClose>
+                    <Link to="/profile" onClick={handleOpenMenu}>
+                      Perfil
+                    </Link>
+                  </DrawerClose>
+                </div>
+              </div>
+            </DrawerContent>
+          </Drawer>
         </div>
       </div>
-      <Drawer anchor="right" open={openMenu} onClose={handleOpenMenu}>
-        <div className="flex flex-col h-full p-2 gap-1 font-2xl decoration-none bg-black text-white">
-          <Link to="/"  onClick={handleOpenMenu}>
-            Início
-          </Link>
-          <Link
-            to="/plates"
-            onClick={handleOpenMenu}
-          >
-            Pratos
-          </Link>
-          <Link
-            to="/profile"
-            onClick={handleOpenMenu}
-          >
-            Perfil
-          </Link>
-        </div>
-      </Drawer>
     </nav>
   );
 }
