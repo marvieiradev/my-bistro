@@ -116,14 +116,10 @@ export default function Cart() {
             ))}
           </div>
         </section>
-
-        <Button className="w-80 mt-8!" onClick={handleOpenPopup}>
-          Confirme sua ordem!
-        </Button>
       </div>
 
       <ConfirmOrderPopup
-        open={confirmPopupOpen}
+        open={handleOpenPopup}
         onClose={handleOpenPopup}
         onConfirm={handleConfirmOrder}
       />

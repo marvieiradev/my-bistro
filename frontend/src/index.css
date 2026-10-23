@@ -81,14 +81,14 @@
   box-sizing: border-box;
 }
 
-button {
+button, .confirmOrder {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5em;
   min-width: fit-content;
   background-color: var(--background);
-  color: #fff;
+  color: var(--foreground);
   border: none;
   cursor: pointer;
 }
