@@ -1,19 +1,15 @@
-import { LuShoppingCart, LuUserRound, LuMenu } from "react-icons/lu";
-//import { Drawer } from "@mui/material";
+import {
+  LuShoppingCart,
+  LuUserRound,
+  LuMenu,
+  LuX,
+  LuSalad,
+  LuHouse,
+} from "react-icons/lu";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from "./ui/drawer";
-import { Button } from "./ui/button";
+import { Drawer, DrawerClose, DrawerContent, DrawerTrigger } from "./ui/drawer";
 
 export default function Navbar() {
   const [openMenu, setOpenMenu] = useState(false);
@@ -41,30 +37,48 @@ export default function Navbar() {
         </div>
       </div>
 
-      <div className="flex w-full md:hidden justify-between items-center gap-2 font-2xl text-foreground pt-0! pb-0! pr-6! pl-6!">
+      <div className="flex w-full md:hidden justify-between items-center gap-2 text-lg text-foreground pt-0! pb-0! pr-6! pl-6!">
         <img src="../imgs/logo.png" alt="Logo" className="w-12" />
-        <div className="flex justify-center items-center gap-2 font-2xl max-w-300">
-          <LuShoppingCart />
-          <Drawer swipeDirection="right" className="text-lg">
+        <div className="flex justify-center items-center gap-4 text-lg max-w-300">
+          <Link to="/cart">
+            <LuShoppingCart />
+          </Link>
+          <Drawer swipeDirection="up" className="text-sm ">
             <DrawerTrigger
               render={<LuMenu className="text-foreground" />}
             ></DrawerTrigger>
-            <DrawerContent>
-              <div className="flex flex-col p-4! h-full justify-center bg-background text-2xl text-foreground">
-                <div className="flex flex-col w-full justify-center p-2 gap-8! decoration-none bg-transparent">
+            <DrawerContent className="mt-1!">
+              <DrawerClose>
+                <div className="flex justify-end w-full p-2! pr-4! text-xl">
+                  <LuX />
+                </div>
+              </DrawerClose>
+              <div className="flex flex-col p-4! h-full justify-center bg-background text-lg">
+                <div className="flex flex-col w-full justify-center items-center p-2 gap-4! decoration-none">
                   <DrawerClose>
                     <Link to="/" onClick={handleOpenMenu}>
-                      Início
+                      <div className="flex justify-center items-center gap-4 w-50 border border-foreground rounded-full p-1!">
+                        <LuHouse />
+                        Início
+                      </div>
                     </Link>
                   </DrawerClose>
+
                   <DrawerClose>
                     <Link to="/plates" onClick={handleOpenMenu}>
-                      Pratos
+                      <div className="flex justify-center items-center gap-4 w-50 border border-foreground rounded-full p-1!">
+                        <LuSalad />
+                        Pratos
+                      </div>
                     </Link>
                   </DrawerClose>
+                  
                   <DrawerClose>
                     <Link to="/profile" onClick={handleOpenMenu}>
-                      Perfil
+                      <div className="flex justify-center items-center gap-4 w-50 border border-foreground rounded-full p-1!">
+                        <LuUserRound />
+                        Perfil
+                      </div>
                     </Link>
                   </DrawerClose>
                 </div>
