@@ -65,8 +65,8 @@ export default function Cart() {
             {cartItems.map((item) => (
               <Card className="bg-background/10">
                 <div className="flex flex-col" key={item._id}>
-                  <div className="flex flex-col justify-center items-center bg-background/50">
-                    <h2 className="text-sm md:text-xl font-semibold">
+                  <div className="flex flex-col justify-center items-center bg-background">
+                    <h2 className="text-sm md:text-xl font-semibold pt-2!">
                       {item.name}
                     </h2>
                     <p className="text-sm md:text-lg mb-2!">
@@ -74,7 +74,7 @@ export default function Cart() {
                     </p>
                   </div>
                   <div className="flex gap-1! w-full bg-background/15 text-background">
-                    <img src={item.imgUrl} className="object-cover w-50 h-60" />
+                    <img src={item.imgUrl} className="object-cover w-30 md:w-50 md:h-60" />
                     <div className="flex flex-col mt-2! gap-2! pl-2!">
                       <p className="text-sm md:text-lg">{item.description}</p>
                       <div className="flex items-center gap-2!">
@@ -99,7 +99,7 @@ export default function Cart() {
                           </Button>
                         </div>
                       </div>
-                      <div className="flex w-full justify-start mt-4!">
+                      <div className="flex w-full justify-start m-2! md:m-4!">
                         <Button
                           className="w-50"
                           onClick={() => {

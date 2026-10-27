@@ -25,7 +25,7 @@ export default function Navbar() {
           <img src="../imgs/logo.png" alt="Logo" className="w-12" />
         </Link>
 
-        <div className="flex justify-center items-center gap-8! p-2 text-foreground">
+        <div className="flex justify-center items-center gap-8! p-2 text-foreground text-lg">
           <Link to="/">Início</Link>
           <Link to="/plates">Pratos</Link>
           <Link to="/cart">
@@ -41,11 +41,11 @@ export default function Navbar() {
         <img src="../imgs/logo.png" alt="Logo" className="w-12" />
         <div className="flex justify-center items-center gap-4 text-lg max-w-300">
           <Link to="/cart">
-            <LuShoppingCart />
+            <LuShoppingCart className="w-7 h-7" />
           </Link>
           <Drawer swipeDirection="up" className="text-sm ">
             <DrawerTrigger
-              render={<LuMenu className="text-foreground" />}
+              render={<LuMenu className="text-foreground w-7 h-7" />}
             ></DrawerTrigger>
             <DrawerContent className="mt-1!">
               <DrawerClose>
@@ -72,7 +72,7 @@ export default function Navbar() {
                       </div>
                     </Link>
                   </DrawerClose>
-                  
+
                   <DrawerClose>
                     <Link to="/profile" onClick={handleOpenMenu}>
                       <div className="flex justify-center items-center gap-4 w-50 border border-foreground rounded-full p-1!">
