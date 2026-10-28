@@ -5,6 +5,7 @@ import ConfirmOrderPopup from "../../components/confirmOrderPopup";
 import orderServices from "../../services/order";
 import { Button } from "../../components/ui/button";
 import { Card } from "../../components/ui/card";
+import { toast } from "../../components/ui/toast"
 import { useNavigate } from "react-router-dom";
 
 export default function Cart() {
@@ -42,6 +43,10 @@ export default function Cart() {
     });
     sendOrder(orderData);
     setConfirmPopupOpen(!confirmPopupOpen);
+    toast.add({
+      type: "success",
+      description: "Ordem confirmada!",
+    });
     clearCart();
   };
 
@@ -63,25 +68,28 @@ export default function Cart() {
         <section>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-2! mt-2! lg:mt-4!">
             {cartItems.map((item) => (
-              <Card className="bg-background/10">
+              <Card className="bg-amber-100">
                 <div className="flex flex-col" key={item._id}>
                   <div className="flex flex-col justify-center items-center bg-background">
                     <h2 className="text-sm md:text-xl font-semibold pt-2!">
                       {item.name}
                     </h2>
-                    <p className="text-sm md:text-lg mb-2!">
+                    <p className="text-sm md:text-lg mb-2! font-light text-center">
                       [{String(item.ingredients)}]
                     </p>
                   </div>
-                  <div className="flex gap-1! w-full bg-background/15 text-background">
-                    <img src={item.imgUrl} className="object-cover w-30 md:w-50 md:h-60" />
+                  <div className="flex gap-1! w-full bg-amber-100 text-background">
+                    <img
+                      src={item.imgUrl}
+                      className="object-cover w-30 md:w-50 md:h-60"
+                    />
                     <div className="flex flex-col mt-2! gap-2! pl-2!">
                       <p className="text-sm md:text-lg">{item.description}</p>
                       <div className="flex items-center gap-2!">
                         <p className="text-sm md:text-lg">Porções:</p>
                         <div className="flex gap-2! justify-center items-center">
                           <Button
-                            className="text-sm md:text-lg w-10"
+                            className="text-sm md:text-lg w-9"
                             onClick={() => {
                               handleChangeItemQty("less", item._id);
                             }}
@@ -90,7 +98,7 @@ export default function Cart() {
                           </Button>
                           <p className="text-sm md:text-lg">{item.quantity}</p>
                           <Button
-                            className="text-sm md:text-lg w-10"
+                            className="text-sm md:text-lg w-9"
                             onClick={() => {
                               handleChangeItemQty("more", item._id);
                             }}

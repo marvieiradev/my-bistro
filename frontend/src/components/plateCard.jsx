@@ -14,8 +14,8 @@ export default function PlateCard({ plateData, onClick }) {
             className="w-full h-full object-cover"
           />
           <div className="flex flex-col absolute w-[90%] p-4!">
-            <h4>{plateData.name}</h4>
-            <h3 className="text-right">$ {plateData.price}</h3>
+            <h4 className="font-semibold text-lg mb-4!">{plateData.name}</h4>
+            <h3 className="text-right font-bold text-xl text-amber-400">R$ {plateData.price}</h3>
           </div>
         </div>
       </CardContent>

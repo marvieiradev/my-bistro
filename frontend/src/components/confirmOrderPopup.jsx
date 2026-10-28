@@ -45,8 +45,8 @@ export default function ConfirmOrderPopup({ onClose, onConfirm }) {
         </div>
       </DialogTrigger>
       <DialogContent>
-        <Card className="text-foreground bg-foreground/20">
-          <div className="flex flex-col justify-center items-center gap-4! p-4!">
+        <Card className="text-foreground bg-amber-200">
+          <div className="flex flex-col justify-center items-center gap-4! p-4! text-black">
             <h2 className="text-2xl font-semibold">Já estamos quase lá...</h2>
             <p>
               Confirme seu pedido com a data atual:{" "}
@@ -55,7 +55,7 @@ export default function ConfirmOrderPopup({ onClose, onConfirm }) {
             <p>A que horas você vai vir buscar o seu pedido?</p>
             <form className="flex flex-col justify-center items-center gap-4! text-background">
               <Input
-                className="bg-foreground/30 rounded-full text-lg! font-semibold p-4! pt-6! pb-6! w-30!"
+                className="bg-foreground/30 rounded-full text-lg! font-semibold p-4! pt-6! pb-6! w-30! border border-amber-400"
                 id="pickupTime"
                 type="time"
                 name="pickupTime"

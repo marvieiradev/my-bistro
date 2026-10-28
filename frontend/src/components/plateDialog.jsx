@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Dialog, DialogTrigger, DialogContent } from "./ui/dialog";
 import PlateCard from "./plateCard";
 import PlatePopup from "./platePopup";
+import { toast } from "./ui/toast"
 
 export default function PlateDialog({ plateData }) {
   const { addToCart } = useCartContext();
@@ -12,6 +13,10 @@ export default function PlateDialog({ plateData }) {
   const handleAddToCart = (itemToAdd) => {
     addToCart(itemToAdd);
     setPlateSelected(null);
+    toast.add({
+      type: "success",
+      description: "Item adicionado ao carrinho!",
+    });
   };
 
   const handlePlateSelected = (plate) => {
@@ -22,7 +27,7 @@ export default function PlateDialog({ plateData }) {
     <>
       <Dialog>
         <DialogTrigger>
-          <PlateCard plateData={plateData} onClick={handlePlateSelected}/>
+          <PlateCard plateData={plateData} onClick={handlePlateSelected} />
         </DialogTrigger>
         {plateSelected && (
           <DialogContent>
