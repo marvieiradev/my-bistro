@@ -1,6 +1,3 @@
-import Dessert from "../../../public/imgs/home/dessert";
-import NaturalFood from "../../../public/imgs/home/naturalFood";
-import Vegetable from "../../../public/imgs/home/vegetable";
 import {
   FaMapMarkerAlt,
   FaFacebookSquare,
@@ -28,9 +25,7 @@ export default function Home() {
       <section className="grid grid-cols-1 md:grid-cols-3 text-white p-2! gap-2!">
         <Card className="bg-background p-4!">
           <CardContent>
-            <i>
-              <NaturalFood />
-            </i>
+           <img src="imgs/home/natural.webp" alt="Comida Natural" />
             <h4 className="text-lg font-semibold text-center m-2!">
               Excelência no dia a dia
             </h4>
@@ -42,9 +37,7 @@ export default function Home() {
         </Card>
         <Card className="bg-background p-4!">
           <CardContent>
-            <i>
-              <Vegetable />
-            </i>
+            <img src="imgs/home/vegetais.webp" alt="Vegetais" />
             <h4 className="text-lg font-semibold text-center m-2!">
               Ingredientes de Primeira Qualidade
             </h4>
@@ -56,9 +49,7 @@ export default function Home() {
         </Card>
         <Card className="bg-background p-4!">
           <CardContent>
-            <i>
-              <Dessert />
-            </i>
+            <img src="imgs/home/sobremesa.webp" alt="Sobremesa" />
             <h4 className="text-lg font-semibold text-center m-2!">
               Sabor para todos
             </h4>
