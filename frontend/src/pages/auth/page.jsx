@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import authServices from "../../services/auth";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../../components/ui/button";
-import { Input } from "../../components/ui/input"
+import { Input } from "../../components/ui/input";
 import {
   Field,
   FieldGroup,
@@ -59,7 +59,7 @@ export default function Cart() {
   };
 
   if (authLoading) {
-    return <Loading/>;
+    return <Loading />;
   }
 
   return (
@@ -67,11 +67,18 @@ export default function Cart() {
       <form className="w-full max-w-120" onSubmit={handleSubmitForm}>
         {formType === "login" ? (
           <>
-            <h1 className="text-center mb-4!">Login</h1>
+            <h1 className="text-center text-xl md:text-2xl font-semibold mb-10!">
+              Entre na sua conta
+            </h1>
             <FieldSet>
               <FieldGroup>
                 <Field>
-                  <FieldLabel htmlFor="username">Email</FieldLabel>
+                  <FieldLabel
+                    htmlFor="username"
+                    className="text-background md:text-lg"
+                  >
+                    Email
+                  </FieldLabel>
                   <Input
                     id="email"
                     type="email"
@@ -82,7 +89,12 @@ export default function Cart() {
                   />
                 </Field>
                 <Field>
-                  <FieldLabel htmlFor="password">Senha</FieldLabel>
+                  <FieldLabel
+                    htmlFor="password"
+                    className="text-background md:text-lg"
+                  >
+                    Senha
+                  </FieldLabel>
                   <Input
                     id="password"
                     type="password"
@@ -93,26 +105,34 @@ export default function Cart() {
                 </Field>
               </FieldGroup>
               <div className="flex flex-col w-full items-center justify-center">
-                <Button type="submit">Login</Button>
-                 <span
-              className="text-sm mt-4! text-blue-600 cursor-pointer"
-              onClick={handleChangeFormType}
-            >
-              Ainda não tem uma conta? Cadastre-se
-            </span>
+                <Button type="submit" className="w-20 md:text-lg md:w-25">
+                  Entrar
+                </Button>
+                <span
+                  className="text-sm mt-4! md:text-base text-blue-600 cursor-pointer"
+                  onClick={handleChangeFormType}
+                >
+                  Ainda não tem uma conta? Cadastre-se
+                </span>
               </div>
             </FieldSet>
-           
           </>
         ) : null}
 
         {formType === "signup" ? (
           <>
-            <h1 className="text-center mb-4!">Cadastrar</h1>
+            <h1 className="text-center text-xl md:text-2xl font-semibold mb-10!">
+              Cadastre-se para entrar
+            </h1>
             <FieldSet>
               <FieldGroup>
                 <Field>
-                  <FieldLabel htmlFor="fullname">Nome</FieldLabel>
+                  <FieldLabel
+                    htmlFor="fullname"
+                    className="text-background md:text-lg"
+                  >
+                    Nome
+                  </FieldLabel>
                   <Input
                     id="fullname"
                     type="text"
@@ -123,7 +143,12 @@ export default function Cart() {
                   />
                 </Field>
                 <Field>
-                  <FieldLabel htmlFor="email">Email</FieldLabel>
+                  <FieldLabel
+                    htmlFor="email"
+                    className="text-background md:text-lg"
+                  >
+                    Email
+                  </FieldLabel>
                   <Input
                     id="email"
                     type="email"
@@ -134,7 +159,12 @@ export default function Cart() {
                   />
                 </Field>
                 <Field>
-                  <FieldLabel htmlFor="password">Senha</FieldLabel>
+                  <FieldLabel
+                    htmlFor="password"
+                    className="text-background md:text-lg"
+                  >
+                    Senha
+                  </FieldLabel>
                   <Input
                     id="password"
                     type="password"
@@ -144,7 +174,10 @@ export default function Cart() {
                   />
                 </Field>
                 <Field>
-                  <FieldLabel htmlFor="confirmPassword">
+                  <FieldLabel
+                    htmlFor="confirmPassword"
+                    className="text-background md:text-lg"
+                  >
                     Confirmar Senha
                   </FieldLabel>
                   <Input
@@ -157,9 +190,11 @@ export default function Cart() {
                 </Field>
               </FieldGroup>
               <div className="flex flex-col w-full items-center justify-center">
-                <Button type="submit">Cadastrar</Button>
+                <Button type="submit" className="w-30 md:text-lg md:w-35">
+                  Enviar
+                </Button>
                 <p
-                  className="text-sm text-center mt-4! text-blue-600 cursor-pointer"
+                  className="text-sm md:text-base text-center mt-4! text-blue-600 cursor-pointer"
                   onClick={handleChangeFormType}
                 >
                   Já tem uma conta? Faça login
