@@ -14,7 +14,9 @@ import Loading from "../loading/page";
 export default function Cart() {
   const [formType, setFormType] = useState("login");
   const [formData, setFormData] = useState(null);
-  const { login, signup, authLoading } = authServices();
+  const [errorPassword, setErrorPassword] = useState(false);
+  const { login, signup, authLoading, errorLogin, errorSignup } =
+    authServices();
   const navigate = useNavigate();
   const authData = JSON.parse(localStorage.getItem("auth"));
 
@@ -48,7 +50,7 @@ export default function Cart() {
         break;
       case "signup":
         if (formData.password !== formData.confirmPassword) {
-          window.alert("As senhas precisam ser iguais.");
+          setErrorPassword(true);
           return;
         }
         signup(formData);
@@ -104,6 +106,11 @@ export default function Cart() {
                   />
                 </Field>
               </FieldGroup>
+              {errorLogin && (
+                <span className="text-center text-sm mt-4! md:text-base text-red-600 font-semibold">
+                  Erro ao realizar login. Verifique suas credenciais.
+                </span>
+              )}
               <div className="flex flex-col w-full items-center justify-center">
                 <Button type="submit" className="w-20 md:text-lg md:w-25">
                   Entrar
@@ -189,6 +196,16 @@ export default function Cart() {
                   />
                 </Field>
               </FieldGroup>
+              {errorPassword && (
+                <span className="text-center text-sm mt-4! md:text-base text-red-600 font-semibold">
+                  As senhas não coincidem.
+                </span>
+              )}
+              {errorSignup && (
+                <span className="text-center text-sm mt-4! md:text-base text-red-600 font-semibold">
+                  Erro ao realizar cadastro. Tente novamente mais tarde.
+                </span>
+              )}
               <div className="flex flex-col w-full items-center justify-center">
                 <Button type="submit" className="w-30 md:text-lg md:w-35">
                   Enviar

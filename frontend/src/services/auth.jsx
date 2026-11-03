@@ -2,6 +2,8 @@ import { useState } from "react";
 
 export default function authServices() {
   const [authLoading, setAuthLoading] = useState(false);
+  const [errorLogin, setErrorLogin] = useState(false);
+   const [errorSignup, setErrorSignup] = useState(false);
   const url = "http://localhost:3000/auth";
   const login = (formData) => {
     setAuthLoading(true);
@@ -23,6 +25,9 @@ export default function authServices() {
               user: result.body.user,
             }),
           );
+        }
+        if (!result.success) {
+          setErrorLogin(true);
         }
       })
       .catch((error) => {
@@ -60,6 +65,7 @@ export default function authServices() {
       })
       .catch((error) => {
         console.error("Error on signup:", error);
+        setErrorSignup(true);
       })
       .finally(() => {
         setAuthLoading(false);
@@ -70,5 +76,7 @@ export default function authServices() {
     login,
     logout,
     authLoading,
+    errorLogin,
+    errorSignup,
   };
 }

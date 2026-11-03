@@ -16,8 +16,6 @@ export default function Navbar() {
   const [openMenu, setOpenMenu] = useState(false);
   const numOrders = useCartContext().cartItems.length;
 
-  console.log(numOrders);
-
   const handleOpenMenu = () => {
     setOpenMenu(!openMenu);
   };
