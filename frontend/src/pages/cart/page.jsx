@@ -48,6 +48,7 @@ export default function Cart() {
       description: "Ordem confirmada!",
     });
     clearCart();
+    navigate("/profile");
   };
 
   if (!cartItems.length) {
